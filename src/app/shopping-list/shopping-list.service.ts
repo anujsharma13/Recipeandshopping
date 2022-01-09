@@ -30,7 +30,17 @@ export class ShoppingListService
         // {
         //     this.addIngredient(Ingredient);
         // }
-        this.ingredients.push(...ingredients);
+        this.ingredients.push(...ingredients); //... is help in pushing multiple elements
+        this.ingredientchanged.emit(this.ingredients.slice());
+      }
+      updateingredient(id:number,ingredient:Ingredient)
+      {
+        this.ingredients[id]=ingredient;
+        this.ingredientchanged.emit(this.ingredients.slice());
+      }
+      deleteingredient(index:number)
+      {
+        this.ingredients.splice(index,1); //delete from index 1 value
         this.ingredientchanged.emit(this.ingredients.slice());
       }
 }
